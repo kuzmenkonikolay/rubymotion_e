@@ -1,5 +1,5 @@
 class SecondView < UIView
-  attr_accessor :switch, :stepper, :stepper_label, :slider_label
+  attr_accessor :switch, :stepper, :stepper_label, :slider_label, :slider
   def init
     super
 
