@@ -14,6 +14,8 @@ class MainViewController < UIViewController
 
   def loadView
     self.view = MainView.new
+    view.top_guide = self.topLayoutGuide
+    view.view_constraints
     view.button.addTarget(self, action: :alert_controller, forControlEvents: UIControlEventTouchUpInside)
     view.todo_button.addTarget(self, action: :add_todo, forControlEvents: UIControlEventTouchUpInside)
 
