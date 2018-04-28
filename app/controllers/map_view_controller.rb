@@ -42,6 +42,7 @@ class MapViewController < UIViewController
   end
 
   def locationManager(locationManager, didUpdateLocations: locations)
-
+    # locations.first.coordinate.latitude
+    # locations.first.coordinate.longitude
   end
 end
