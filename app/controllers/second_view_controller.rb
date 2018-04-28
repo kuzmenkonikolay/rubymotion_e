@@ -3,7 +3,7 @@ class SecondViewController < UIViewController
   def init
     super
 
-    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemBookmarks, tag: 1)
+    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemTopRated, tag: 3)
 
     self
   end
