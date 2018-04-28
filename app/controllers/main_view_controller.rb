@@ -6,6 +6,7 @@ class MainViewController < UIViewController
   def loadView
     self.view = MainView.new
     view.button.addTarget(self, action: :alert_controller, forControlEvents: UIControlEventTouchUpInside)
+    view.todo_button.addTarget(self, action: :second_controller, forControlEvents: UIControlEventTouchUpInside)
   end
 
   def alert_controller
@@ -28,6 +29,10 @@ class MainViewController < UIViewController
 
   def ok_response
     p 'You pressed ok'
+  end
+
+  def second_controller
+    navigationController.pushViewController(SecondViewController.new, animated: true)
   end
 
 end
