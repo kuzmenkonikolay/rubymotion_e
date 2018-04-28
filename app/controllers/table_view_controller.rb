@@ -10,6 +10,7 @@ class TableViewController < UITableViewController
   def loadView
     self.title = 'Table'
     self.tableView = UITableView.new
+    tableView.registerClass(UITableViewCell, forCellReuseIdentifier: 'CELL')
   end
 
   def tableView(tableView, numberOfRowsInSection: section)
@@ -17,9 +18,9 @@ class TableViewController < UITableViewController
   end
 
   def tableView(tableView, cellForRowAtIndexPath: indexPath)
-    cell = UITableViewCell.new
-    cell.textLabel.text = Titles.all[indexPath.row]
-    cell.imageView.image = UIImage.imageNamed('volume-off')
+    cell = tableView.dequeueReusableCellWithIdentifier('CELL', forIndexPath: indexPath)
+    cell.textLabel.text = Titles.all[indexPath.row][0]
+    cell.imageView.image = UIImage.imageNamed(Titles.all[indexPath.row][1])
     cell
   end
 end
