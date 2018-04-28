@@ -17,6 +17,11 @@ class MainView < UIView
     label.textColor = UIColor.blueColor
     label.frame = [[20,150], [250, 30]]
     addSubview(label)
-    
+
+    field = UITextField.new
+    field.placeholder = 'Text inside the field'
+    field.backgroundColor = UIColor.yellowColor
+    field.frame = [[20,250], [250, 30]]
+    addSubview(field)
   end
 end
