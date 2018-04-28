@@ -8,7 +8,8 @@ class MainTabBarController < UITabBarController
         UINavigationController.alloc.initWithRootViewController(FavoriteViewController.new),
         UINavigationController.alloc.initWithRootViewController(RecentViewController.new),
         UINavigationController.alloc.initWithRootViewController(SecondViewController.new),
-        UINavigationController.alloc.initWithRootViewController(TableViewController.new)
+        UINavigationController.alloc.initWithRootViewController(TableViewController.new),
+        UINavigationController.alloc.initWithRootViewController(MapViewController.new)
     ]
 
     # self.tabBar.barTintColor = UIColor.redColor
