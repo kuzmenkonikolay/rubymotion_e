@@ -7,6 +7,9 @@ class MainTabBarController < UITabBarController
         SecondViewController.new,
         MainViewController.new
     ]
+
+    # self.tabBar.barTintColor = UIColor.redColor
+
     self
   end
 end
