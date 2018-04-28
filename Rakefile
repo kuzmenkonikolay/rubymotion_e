@@ -52,6 +52,8 @@ Motion::Project::App.setup do |app|
   app.interface_orientations = [:portrait]
   app.info_plist['UIRequiresFullScreen'] = true
   app.info_plist['ITSAppUsesNonExemptEncryption'] = false
+  app.info_plist['NSLocationAlwaysUsageDescription'] = 'Example app needs your location'
+  app.info_plist['NSLocationWhenInUseUsageDescription'] = 'Example app needs your location'
 
   # ===========================================================================================
   # 6. To deploy to an actual device, you will need to create a developer certificate at:
