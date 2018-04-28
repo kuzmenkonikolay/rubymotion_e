@@ -1,4 +1,13 @@
 class MainViewController < UIViewController
+  def init
+    super
+
+    # self.tabBarItem = UITabBarItem.alloc.initWithTitle('Second', image: UIImage.imageNamed('second_image'), tag: 3)
+    self.tabBarItem = UITabBarItem.alloc.initWithTabBarSystemItem(UITabBarSystemItemTopRated, tag: 1)
+
+    self
+  end
+
   def viewDidLoad
     self.title = 'Main'
   end
@@ -6,7 +15,12 @@ class MainViewController < UIViewController
   def loadView
     self.view = MainView.new
     view.button.addTarget(self, action: :alert_controller, forControlEvents: UIControlEventTouchUpInside)
-    view.todo_button.addTarget(self, action: :second_controller, forControlEvents: UIControlEventTouchUpInside)
+    view.todo_button.addTarget(self, action: :add_todo, forControlEvents: UIControlEventTouchUpInside)
+
+    right_button = UIBarButtonItem.alloc.initWithTitle('Add', style: UIBarButtonItemStylePlain, target: self, action: :add_todo)
+    left_button = UIBarButtonItem.alloc.initWithTitle('Delete', style: UIBarButtonItemStylePlain, target: self, action: nil)
+    self.navigationItem.setRightBarButtonItem(right_button, animated: true)
+    self.navigationItem.setLeftBarButtonItem(left_button, animated: true)
   end
 
   def alert_controller
@@ -32,7 +46,10 @@ class MainViewController < UIViewController
   end
 
   def second_controller
-    navigationController.pushViewController(MainTabBarController.new, animated: true)
+    navigationController.pushViewController(TodoViewController.new, animated: true)
   end
 
+  def add_todo
+    navigationController.pushViewController(TodoViewController.new, animated: true)
+  end
 end
