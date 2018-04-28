@@ -1,4 +1,5 @@
 class MapViewController < UIViewController
+  attr_accessor :region, :span, :pin
   def init
     super
 
@@ -11,6 +12,7 @@ class MapViewController < UIViewController
     self.title = 'Map'
     self.view = MKMapView.new
     center_austin
+    @pin = MKPointAnnotation.new
     get_location
   end
 
@@ -19,15 +21,15 @@ class MapViewController < UIViewController
     coordinates.latitude = 30.26
     coordinates.longitude = -97.74
 
-    span = MKCoordinateSpan.new
-    span.latitudeDelta = 0.1
-    span.longitudeDelta = 0.1
+    @span = MKCoordinateSpan.new
+    @span.latitudeDelta = 0.01
+    @span.longitudeDelta = 0.01
 
-    region = MKCoordinateRegion.new
-    region.center = coordinates
-    region.span = span
+    @region = MKCoordinateRegion.new
+    @region.center = coordinates
+    @region.span = @span
 
-    self.view.setRegion(region, animated: true)
+    self.view.setRegion(@region, animated: true)
   end
 
   def get_location
@@ -44,5 +46,12 @@ class MapViewController < UIViewController
   def locationManager(locationManager, didUpdateLocations: locations)
     # locations.first.coordinate.latitude
     # locations.first.coordinate.longitude
+    current_location = locations.first.coordinate
+    
+    @pin.coordinate = current_location
+    @region.center = current_location
+    @region.span = @span
+    view.showAnnotations([@pin], animated: true)
+    view.setRegion(@region, animated: true)
   end
 end
