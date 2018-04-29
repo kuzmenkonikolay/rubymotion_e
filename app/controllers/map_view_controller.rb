@@ -47,8 +47,10 @@ class MapViewController < UIViewController
     # locations.first.coordinate.latitude
     # locations.first.coordinate.longitude
     current_location = locations.first.coordinate
-    
+
     @pin.coordinate = current_location
+    @pin.title = 'Current Location'
+    @pin.subtitle = 'This is where we are'
     @region.center = current_location
     @region.span = @span
     view.showAnnotations([@pin], animated: true)
